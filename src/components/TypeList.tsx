@@ -1,6 +1,6 @@
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { StaticColors } from '../assets/StaticColors'
+import { StaticColors } from '../theme/StaticColors'
 import { NavigationTypes } from '../common/commonTypes';
 import { useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
@@ -21,7 +21,7 @@ export default function TypeList({ data }: { data: Array<any> }) {
                         backgroundColor={colors[index % colors.length]}
                         index={index}
                         item={item}
-                        onPress={() => { }}
+                        onPress={() => { navigation.navigate('PokemonListScreen') }}
                     />
                 }
             />

@@ -1,29 +1,20 @@
 import { Animated, Platform, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 import React from 'react'
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import HomeScreen from '../screens/HomeScreen';
-import Favorites from '../screens/Favorites';
 import { useLinkBuilder } from '@react-navigation/native';
-import { StaticColors } from '../theme/StaticColors';
-import Icon from 'react-native-vector-icons/AntDesign';
-import Icon2 from 'react-native-vector-icons/MaterialIcons';
+import { DarkTheme, LightTheme, StaticColors } from '../theme/StaticColors';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import { useTheme } from '../theme/themeContext';
 
-const Tab = createMaterialTopTabNavigator();
-export default function tabBarStack() {
-    return (
-        <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-            <Tab.Screen name="Home" component={HomeScreen} />
-            <Tab.Screen name="Favorites" component={Favorites} />
-        </Tab.Navigator>
-    )
+interface CustomTabsProps extends BottomTabBarProps {
+    position: Animated.AnimatedInterpolation<number>;
 }
 
-function MyTabBar({ state, descriptors, navigation, position }) {
+export default function CustomTabs({ state, descriptors, navigation, position }: CustomTabsProps) {
     const { buildHref } = useLinkBuilder();
-
+    const { isDarkTheme } = useTheme()
     return (
         <View style={styles.tabBarStyle}>
-            {state.routes.map((route, index) => {
+            {state.routes.map((route: any, index: number) => {
                 const { options } = descriptors[route.key];
                 const label =
                     options.tabBarLabel !== undefined
@@ -70,13 +61,12 @@ function MyTabBar({ state, descriptors, navigation, position }) {
                         onLongPress={onLongPress}
                         style={singleTabStyle(isFocused)}
                     >
-                        {index == 0 ?
-                            <Icon name="home" size={30} color={isFocused ? StaticColors.skyBlue : StaticColors.bright} />
-                            :
-                            <Icon2 name="favorite-border" size={30} color={isFocused ? StaticColors.skyBlue : StaticColors.bright} />
-                        }
-                        <View style={{ width: 5 }} />
-                        <Animated.Text style={{ color: isFocused ? "#148EFF" : StaticColors.bright, fontSize: 20 }}>
+                        <Animated.Text style={{
+                            color: isFocused ?
+                                `${isDarkTheme ? DarkTheme.background : LightTheme.background}` :
+                                `${isDarkTheme ? DarkTheme.darkFWithOpacity(0.5) : LightTheme.darkFWithOpacity(0.5)}`,
+                            fontSize: 15
+                        }}>
                             {label}
                         </Animated.Text>
                     </TouchableOpacity>
@@ -92,16 +82,13 @@ const singleTabStyle = (focused: boolean): ViewStyle => ({
     flex: 1,
     flexDirection: 'row',
     borderBottomWidth: 5,
-    borderBottomColor: focused ? StaticColors.skyBlue : StaticColors.background,
+    borderBottomColor: focused ? StaticColors.skyBlue : "transparent",
     paddingBottom: 10,
     marginHorizontal: 20
 })
 const styles = StyleSheet.create({
     tabBarStyle: {
         flexDirection: 'row',
-        backgroundColor: StaticColors.background,
-        paddingBottom: 10,
-        paddingTop: 10
+        paddingTop: 20
     },
-
 })

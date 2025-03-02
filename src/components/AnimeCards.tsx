@@ -1,7 +1,7 @@
 import { Dimensions, Image, ImageStyle, StyleSheet, Text, TouchableOpacity, View, ViewStyle } from 'react-native'
 import React, { useState } from 'react'
-import { StaticColors } from '../assets/StaticColors'
-import { commonStyle } from '../common/commonStyle'
+import { StaticColors } from '../theme/StaticColors'
+import { useCommonStyles } from '../common/commonStyle'
 import LinearGradient from 'react-native-linear-gradient'
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
@@ -9,6 +9,7 @@ import { useAppDispatch } from '../reduxStoreAndSlice/store'
 
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
 const { height, width } = Dimensions.get('window')
+const commonStyle = useCommonStyles()
 
 export default function AnimeCards({ url, title, onPress, Customwidth }: { url?: string, title?: string, onPress: () => void, Customwidth?: number }) {
     const [loading, setLoading] = useState(true)

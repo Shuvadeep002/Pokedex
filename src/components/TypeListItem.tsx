@@ -1,9 +1,10 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect } from 'react'
-import { StaticColors } from '../assets/StaticColors'
+import { StaticColors } from '../theme/StaticColors'
 import Animated, { useAnimatedStyle, useSharedValue, withDelay, withTiming, Easing } from 'react-native-reanimated';
 import { NavigationTypes } from '../common/commonTypes';
 import { useNavigation } from '@react-navigation/native';
+import { getPokemonName } from '../common/commonFunctions';
 
 
 const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
@@ -57,7 +58,7 @@ export default function TypeListItem(
             onPress={onPress}
             activeOpacity={0.5}
             style={[styles.itemContainer, animatedStyle, { backgroundColor: backgroundColor }]}>
-            <Text numberOfLines={1} style={styles.itemText}>{`${item?.name[0]?.toUpperCase()}${item?.name?.slice(1)}`}</Text>
+            <Text numberOfLines={1} style={styles.itemText}>{getPokemonName(item?.name)}</Text>
             <Image style={styles.pokeball} source={require('../assets/Images/Pokeball.png')} />
         </AnimatedTouchableOpacity>
     )

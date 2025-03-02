@@ -1,7 +1,7 @@
 import { Dimensions, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { BlurView } from '@react-native-community/blur';
-import { StaticColors } from '../assets/StaticColors';
+import { StaticColors } from '../theme/StaticColors';
 import Icon2 from 'react-native-vector-icons/EvilIcons';
 import { Anime, NavigationTypes } from '../common/commonTypes';
 import CustomFlatList from './CustomFlatList';
@@ -9,9 +9,9 @@ import { useAppDispatch } from '../reduxStoreAndSlice/store';
 import { useNavigation } from '@react-navigation/native';
 import AnimeCards from './AnimeCards';
 import { setIndividualAnime } from '../reduxStoreAndSlice/animeSlice';
-import Icon4 from 'react-native-vector-icons/Ionicons';
 import { getResponse, postResponse } from '../common/commonFunctions';
 import { APIConstants } from '../assets/StaticText';
+import BackBtn from './BackBtn';
 
 export default function SearchComponent({ modalVisible, setModalVisible }: { modalVisible: boolean, setModalVisible: () => void }) {
     const [text, setText] = useState('')
@@ -53,12 +53,11 @@ export default function SearchComponent({ modalVisible, setModalVisible }: { mod
                     nestedScrollEnabled
                     style={styles.mainContainer}>
                     <View style={styles.headerContainer}>
-                        <View>
-                            <TouchableOpacity onPress={() => setModalVisible()}
-                                style={styles.backBtn}>
-                                <Icon4 name="arrow-back" size={25} color={StaticColors.white} />
-                            </TouchableOpacity>
-                        </View>
+                        <BackBtn
+                            style={{
+                                marginTop: -21,
+                            }}
+                            onPress={() => setModalVisible()} />
                         <View style={styles.textContainer}>
                             <Icon2 name="search" size={30} color={StaticColors.charcoal} />
                             <TextInput
@@ -135,20 +134,10 @@ const styles = StyleSheet.create({
     },
     textInput: {
         flex: 1,
-        color: StaticColors.white,
+        color: StaticColors.bright,
         fontSize: 17,
         maxHeight: 100,
         marginLeft: 10,
-    },
-    backBtn: {
-        height: 40,
-        width: 40,
-        borderRadius: 20,
-        backgroundColor: StaticColors.background,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginRight: 10,
-        marginTop: -21,
     },
     headerContainer: {
         flexDirection: 'row',
