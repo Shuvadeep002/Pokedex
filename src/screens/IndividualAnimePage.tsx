@@ -1,13 +1,13 @@
 import { Alert, Dimensions, Image, ImageStyle, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { commonStyle } from '../common/commonStyle'
+import { useCommonStyles } from '../common/commonStyle'
 import { useAppDispatch, useAppSelector } from '../reduxStoreAndSlice/store'
 import LinearGradient from 'react-native-linear-gradient'
 import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder'
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import Icon3 from 'react-native-vector-icons/Entypo';
 import Icon4 from 'react-native-vector-icons/Ionicons';
-import { StaticColors } from '../assets/StaticColors'
+import { StaticColors } from '../theme/StaticColors'
 import { NavigationTypes } from '../common/commonTypes'
 import { useNavigation } from '@react-navigation/native'
 import { setItemInStorage } from '../utils/AsyncStorageService'
@@ -18,6 +18,8 @@ import { addFavouriteList, removeFromFavoutire } from '../reduxStoreAndSlice/ani
 const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient)
 const { height, width } = Dimensions.get('window')
 export default function IndividualAnimePage() {
+  const commonStyle = useCommonStyles()
+
   const [loading, setLoading] = useState(true)
   const dispatch = useAppDispatch()
   const navigation: NavigationTypes = useNavigation()
@@ -66,7 +68,7 @@ export default function IndividualAnimePage() {
       <View style={styles.imageContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}
           style={styles.backBtn}>
-          <Icon4 name="arrow-back" size={25} color={StaticColors.white} />
+          <Icon4 name="arrow-back" size={25} color={StaticColors.bright} />
         </TouchableOpacity>
         {loading && (
           <ShimmerPlaceholder style={styles.imageContainer} />
@@ -89,7 +91,7 @@ export default function IndividualAnimePage() {
             {IsFavourite() ?
               <Icon2 name="favorite" size={30} color={StaticColors.yellow} />
               :
-              <Icon2 name="favorite-border" size={30} color={StaticColors.white} />
+              <Icon2 name="favorite-border" size={30} color={StaticColors.bright} />
 
             }
           </TouchableOpacity>
@@ -99,7 +101,7 @@ export default function IndividualAnimePage() {
           style={styles.watchBtn}>
           <Text style={commonStyle.f15W500Text}>Watch</Text>
           <View style={{ width: 5 }} />
-          <Icon3 name="link" size={17} color={StaticColors.white} />
+          <Icon3 name="link" size={17} color={StaticColors.bright} />
         </TouchableOpacity>
         <View >
           <Text style={commonStyle.f15W500Text}>Episode duration: {AnimeData.duration}</Text>

@@ -1,7 +1,7 @@
 import { Alert, Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { StaticColors } from '../assets/StaticColors'
-import { commonStyle } from '../common/commonStyle'
+import { StaticColors } from '../theme/StaticColors'
+import { useCommonStyles } from '../common/commonStyle'
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import { Anime, NavigationTypes } from '../common/commonTypes';
 import { StaticText } from '../assets/StaticText';
@@ -15,6 +15,8 @@ export default function FavouriteCard({ data }: { data: Anime }) {
     const FavouriteList = useAppSelector(state => state.animeData.favouriteList)
     const dispatch = useAppDispatch()
     const navigation: NavigationTypes = useNavigation()
+    const commonStyle = useCommonStyles()
+
 
     const RemoveFromFavourites = () => {
         Alert.alert('Warning!!!', 'Are you sure you want to remove this anime from favourites?', [

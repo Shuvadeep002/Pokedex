@@ -58,9 +58,7 @@ const CustomFlatList = <T extends any>(props: CustomFlatListProps<T>) => {
       showsVerticalScrollIndicator={false}
       showsHorizontalScrollIndicator={false}
       refreshControl={
-        <>
-          {props.onRefreshing && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-        </>
+          props.onRefreshing && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
       ListFooterComponent={
         <>

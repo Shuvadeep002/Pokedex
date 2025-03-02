@@ -1,8 +1,8 @@
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
-import { commonStyle } from '../common/commonStyle'
+import { useCommonStyles } from '../common/commonStyle'
 import Loader from '../common/Loader'
-import { StaticColors } from '../assets/StaticColors'
+import { StaticColors } from '../theme/StaticColors'
 import { useNavigation } from '@react-navigation/native'
 import { NavigationTypes } from '../common/commonTypes'
 import { APIConstants, StaticText } from '../assets/StaticText'
@@ -17,6 +17,8 @@ import { getPokemonTypes, getResponse } from '../common/commonFunctions'
 import { setPokemonTypes } from '../reduxStoreAndSlice/pokemonSlice'
 
 export default function SplashScreen() {
+    const commonStyle = useCommonStyles()
+
     const navigation: NavigationTypes = useNavigation();
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -26,7 +28,7 @@ export default function SplashScreen() {
         //         dispatch(setFavouriteList(favouriteListData ?? []))
         //     }
         // })
-        getPokemonTypes().then((response: any) => { dispatch(setPokemonTypes(response.results)) }).catch((error) => console.log(error))
+        // getPokemonTypes().then((response: any) => { dispatch(setPokemonTypes(response.results)) }).catch((error) => console.log(error))
         setTimeout(() => {
             navigation.replace("BottomNav")
         }, 500)
