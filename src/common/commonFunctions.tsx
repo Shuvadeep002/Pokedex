@@ -1,6 +1,7 @@
 import { Keyboard } from "react-native";
 import { APIConstants } from "../assets/StaticText";
 import { doGetApiCall, doPostApiCall } from "../utils/ApiServices";
+import { store } from "../reduxStoreAndSlice/store";
 
 export const getResponse = (endPoint: string, page: number) => {
     return new Promise(async function (resolve, reject) {
@@ -71,3 +72,15 @@ export const getPokemonList = (limit: number) => {
         }
     });
 };
+
+
+export const IsFavorite = (data:any) => {
+    const state = store.getState();
+    const favoriteList = state.pokemonData.favoritePokemonList
+    if(favoriteList?.length > 0){
+      return favoriteList?.some((item) => item.id == data.id)
+    }
+    else{
+      return false
+    }
+  }

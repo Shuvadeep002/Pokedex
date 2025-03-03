@@ -7,6 +7,8 @@ export const APIConstants = {
 
 export const StaticText = {
     ANIME_LIST: 'AnimeList',
+    POKEMON_LIST: "PokemonList",
+    FAVORITE_POKEMON_LIST: 'FavoritePokemonList',
     Pokedex: "Pokédex",
     WhatPokemon: "What Pokémon are you looking for?",
     SearchPokemon: "Search Pokémon",

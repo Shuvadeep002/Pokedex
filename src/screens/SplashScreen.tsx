@@ -14,24 +14,38 @@ import LottieView from 'lottie-react-native';
 import { ScreenWidth } from '../common/ScreenHeightWidth'
 import { F40W900Text } from '../components/TextComponents'
 import { getPokemonTypes, getResponse } from '../common/commonFunctions'
-import { setPokemonTypes } from '../reduxStoreAndSlice/pokemonSlice'
+import { setFavoritePokemonList, setPokemonList, setPokemonTypes } from '../reduxStoreAndSlice/pokemonSlice'
+import { addEventListener } from '@react-native-community/netinfo'
 
 export default function SplashScreen() {
     const commonStyle = useCommonStyles()
 
     const navigation: NavigationTypes = useNavigation();
     const dispatch = useAppDispatch()
+    const storeFavPokemonList = () => {
+        getItemFromStorage(StaticText.FAVORITE_POKEMON_LIST).then((response) => {
+            const favouriteListData: any = JSON.parse(response);
+            if (favouriteListData) {
+                dispatch(setFavoritePokemonList(favouriteListData ?? []))
+            }
+            setTimeout(() => {
+                navigation.replace("BottomNav")
+            }, 500)
+        })
+    }
     useEffect(() => {
-        // getItemFromStorage(StaticText.ANIME_LIST).then((response) => {
-        //     const favouriteListData: any = JSON.parse(response);
-        //     if (favouriteListData) {
-        //         dispatch(setFavouriteList(favouriteListData ?? []))
-        //     }
-        // })
-        // getPokemonTypes().then((response: any) => { dispatch(setPokemonTypes(response.results)) }).catch((error) => console.log(error))
-        setTimeout(() => {
-            navigation.replace("BottomNav")
-        }, 500)
+        const unsubscribe = addEventListener(state => {
+            if (state.isConnected ? true : false) {
+                getItemFromStorage(StaticText.POKEMON_LIST).then((response) => {
+                    dispatch(setPokemonList)
+                    storeFavPokemonList()
+                })
+            }
+            else {
+                storeFavPokemonList()
+            }
+        });
+        return () => unsubscribe()
     }, [])
     return (
         <View style={commonStyle.mainContainer}>
