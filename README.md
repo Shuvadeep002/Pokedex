@@ -72,9 +72,6 @@ npm run ios  # OR yarn ios
 ## 📝 License
 This project is licensed under the MIT License.
 
-## 🤝 Contributing
-Feel free to open an issue or submit a pull request to improve the app.
-
 
 - **Email:** your-email@example.com
 - **GitHub:** [your-username](https://github.com/Shuvadeep002/Pokedex)
