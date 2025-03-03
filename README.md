@@ -1,97 +1,85 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Pokedex App
+
+This is a new [**React Native**](https://reactnative.dev) project that fetches and displays Pokémon data using [PokeAPI](https://pokeapi.co).
+
+## 📸 App Screenshots
+
+![Screenshot 1](link-to-screenshot-1)
+![Screenshot 2](link-to-screenshot-2)
+![Screenshot 3](link-to-screenshot-3)
+
+> *Replace the above links with actual image URLs*
 
 # Getting Started
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+> **Note**: Ensure you have completed the [React Native Environment Setup](https://reactnative.dev/docs/environment-setup) before proceeding.
 
-## Step 1: Start Metro
-
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
-
+## Step 1: Clone the Repository
 ```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+git clone https://github.com/your-username/pokedex-app.git
+cd pokedex-app
 ```
 
-## Step 2: Build and run your app
+## Step 2: Install Dependencies
+```sh
+npm install  # OR yarn install
+```
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## Step 3: Start Metro
+Metro is the JavaScript bundler for React Native. Start it by running:
+```sh
+npm start  # OR yarn start
+```
+
+## Step 4: Build and Run the App
 
 ### Android
-
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+npm run android  # OR yarn android
 ```
 
 ### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
+> **Note**: Ensure you have installed CocoaPods dependencies before running the iOS app.
 ```sh
-bundle install
+cd ios && pod install && cd ..
+npm run ios  # OR yarn ios
 ```
 
-Then, and every time you update your native dependencies, run:
+## ✨ Features
+- 🔍 **Search Pokémon** by name or ID
+- 📜 **View Pokémon details** including type, abilities, and stats
+- 🎨 **Modern UI** with smooth animations
+- 🌎 **Fetch real-time Pokémon data** from PokeAPI
+- 📱 **Responsive design** for both mobile and tablet devices
 
-```sh
-bundle exec pod install
-```
+## 🔧 Technologies Used
+- React Native
+- Redux (if applicable)
+- PokeAPI
+- Styled Components / Tailwind (if applicable)
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## 🚀 How to Use
+1. Open the app and search for a Pokémon.
+2. Tap on a Pokémon card to view its detailed stats.
+3. Navigate through different Pokémon easily.
 
-```sh
-# Using npm
-npm run ios
+## 📌 Roadmap / Future Enhancements
+- Add Pokémon evolution chain
+- Implement dark mode
+- Offline mode support
+- Add favorite Pokémon list
 
-# OR using Yarn
-yarn ios
-```
+## 📝 License
+This project is licensed under the MIT License.
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## 🤝 Contributing
+Feel free to open an issue or submit a pull request to improve the app.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## 📬 Contact
+For any queries or suggestions, reach out at:
+- **Email:** your-email@example.com
+- **GitHub:** [your-username](https://github.com/your-username)
 
-## Step 3: Modify your app
+---
+Enjoy catching 'em all! 🎉
 
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
