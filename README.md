@@ -75,8 +75,7 @@ This project is licensed under the MIT License.
 ## 🤝 Contributing
 Feel free to open an issue or submit a pull request to improve the app.
 
-## 📬 Contact
-For any queries or suggestions, reach out at:
+
 - **Email:** your-email@example.com
 - **GitHub:** [your-username](https://github.com/Shuvadeep002/Pokedex)
 
