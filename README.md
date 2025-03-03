@@ -16,7 +16,7 @@ This is a new [**React Native**](https://reactnative.dev) project that fetches a
 
 ## Step 1: Clone the Repository
 ```sh
-git clone https://github.com/your-username/pokedex-app.git
+git clone https://github.com/your-username/pokedex-app.git](https://github.com/Shuvadeep002/Pokedex.git
 cd pokedex-app
 ```
 
@@ -46,17 +46,17 @@ npm run ios  # OR yarn ios
 ```
 
 ## ✨ Features
-- 🔍 **Search Pokémon** by name or ID
 - 📜 **View Pokémon details** including type, abilities, and stats
 - 🎨 **Modern UI** with smooth animations
 - 🌎 **Fetch real-time Pokémon data** from PokeAPI
 - 📱 **Responsive design** for both mobile and tablet devices
+- 🌙 Light and Dark Mode Support for better user experience
 
 ## 🔧 Technologies Used
 - React Native
 - Redux (if applicable)
 - PokeAPI
-- Styled Components / Tailwind (if applicable)
+- Styled Components
 
 ## 🚀 How to Use
 1. Open the app and search for a Pokémon.
@@ -78,7 +78,7 @@ Feel free to open an issue or submit a pull request to improve the app.
 ## 📬 Contact
 For any queries or suggestions, reach out at:
 - **Email:** your-email@example.com
-- **GitHub:** [your-username](https://github.com/your-username)
+- **GitHub:** [your-username](https://github.com/Shuvadeep002/Pokedex)
 
 ---
 Enjoy catching 'em all! 🎉
