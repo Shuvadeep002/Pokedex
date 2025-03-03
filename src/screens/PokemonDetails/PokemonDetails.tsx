@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native'
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import { DarkTheme, LightTheme, StaticColors } from '../../theme/StaticColors'
 import { F10W900Text, F15W900Text, F30W900Text } from '../../components/TextComponents'
-import { getPokemonName } from '../../common/commonFunctions'
+import { getPokemonName, IsFavorite } from '../../common/commonFunctions'
 import PokemonTypeItem from '../../components/PokemonTypeItem'
 import { StaticText } from '../../assets/StaticText'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
@@ -17,20 +17,54 @@ import PokemonStats from './PokemonStats'
 import PokemonMoves from './PokemonMoves'
 import PokemonAbilities from './PokemonAbilities'
 import { useTheme } from '../../theme/themeContext'
+import { setItemInStorage } from '../../utils/AsyncStorageService'
+import { useDispatch } from 'react-redux'
+import { setFavoritePokemonList } from '../../reduxStoreAndSlice/pokemonSlice'
 const Tab = createMaterialTopTabNavigator();
 
 export default function PokemonDetails() {
+    const dispatch = useDispatch()
     const navigation: NavigationTypes = useNavigation()
     const PokemonDetails = useAppSelector(state => state.pokemonData.pokemonDetails)
+    const FavoriteList = useAppSelector(state => state.pokemonData.favoritePokemonList)
     const commonStyle = useCommonStyles()
     const { isDarkTheme } = useTheme()
+
+    const favoriteStatus = () => {
+        if (IsFavorite(PokemonDetails)) {
+            let favoriteData = FavoriteList.filter((item) => item.id != PokemonDetails.id)
+            setItemInStorage({
+                key: StaticText.FAVORITE_POKEMON_LIST,
+                value: JSON.stringify(favoriteData),
+            }).then(() => {
+                dispatch(setFavoritePokemonList(favoriteData))
+            });
+        }
+        else {
+            let favoriteData = [PokemonDetails, ...FavoriteList]
+            setItemInStorage({
+                key: StaticText.FAVORITE_POKEMON_LIST,
+                value: JSON.stringify(favoriteData),
+            }).then(() => {
+                dispatch(setFavoritePokemonList(favoriteData))
+            });
+        }
+
+    }
+
     return (
         <View style={commonStyle.mainContainer}>
             <View style={styles.topContainer}>
                 <View style={styles.headerContainer}>
                     <BackBtn onPress={() => { navigation.goBack() }} />
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        hitSlop={{ top: 20, bottom: 20, left: 50, right: 50 }}
+                        onPress={() => { favoriteStatus() }}
+                    >{IsFavorite(PokemonDetails) ?
+                        <Icon2 name="favorite" size={25} color={StaticColors.yellow} />
+                        :
                         <Icon2 name="favorite-border" size={25} color={StaticColors.bright} />
+                        }
                     </TouchableOpacity>
                 </View>
             </View>

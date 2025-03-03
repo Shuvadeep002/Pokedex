@@ -10,7 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-community/blur": "^4.4.1",
     "@react-native-community/netinfo": "^11.4.1",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/elements": "^2.2.5",
@@ -26,8 +25,6 @@
     "react-native-encrypted-storage": "^4.0.3",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-pager-view": "^6.7.0",
-    "react-native-reanimated": "^3.17.0",
-    "react-native-reanimated-carousel": "^3.5.1",
     "react-native-safe-area-context": "^5.1.0",
     "react-native-screens": "^4.6.0",
     "react-native-shimmer-placeholder": "^2.0.9",

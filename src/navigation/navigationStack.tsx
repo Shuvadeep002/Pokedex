@@ -4,11 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import SplashScreen from '../screens/SplashScreen';
 import bottomNavStack from './bottomNavStack';
-import IndividualAnimePage from '../screens/IndividualAnimePage';
-import AllAnimeScreen from '../screens/AllAnimeScreen';
 import { StaticColors } from '../theme/StaticColors';
 import { APIConstants } from '../assets/StaticText';
-import tabBarStack from './tabBarStack';
 import PokemonListScreen from '../screens/PokemonListScreen';
 import PokemonDetails from '../screens/PokemonDetails/PokemonDetails';
 
