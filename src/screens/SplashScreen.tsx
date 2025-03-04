@@ -9,7 +9,6 @@ import { APIConstants, StaticText } from '../assets/StaticText'
 import { getItemFromStorage } from '../utils/AsyncStorageService'
 import { useDispatch } from 'react-redux'
 import { useAppDispatch } from '../reduxStoreAndSlice/store'
-import { setFavouriteList } from '../reduxStoreAndSlice/animeSlice'
 import LottieView from 'lottie-react-native';
 import { ScreenWidth } from '../common/ScreenHeightWidth'
 import { F40W900Text } from '../components/TextComponents'

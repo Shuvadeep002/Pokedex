@@ -15,6 +15,7 @@ import { addPokemonList, setIndividualPokemon, setPokemonList } from '../reduxSt
 import { NavigationTypes } from '../common/commonTypes'
 import { useNavigation } from '@react-navigation/native'
 import { useTheme } from '../theme/themeContext'
+import { setItemInStorage } from '../utils/AsyncStorageService'
 
 export default function HomeScreen() {
     const commonStyle = useCommonStyles()
@@ -32,15 +33,23 @@ export default function HomeScreen() {
     const GetPokemon = (page: number) => {
         let DataQnty = page * 20
         setLoading(true)
-        getPokemonList(DataQnty).then((response: any) => {
+        getPokemonList(DataQnty).then(async (response: any) => {
             setLoading(false)
             if (page == 0) {
                 setPage(page + 1)
                 dispatch(setPokemonList(response))
+                await setItemInStorage({
+                    key: StaticText.POKEMON_LIST,
+                    value: JSON.stringify(response),
+                })
             }
             else {
                 dispatch(addPokemonList(response))
                 setPage(page + 1)
+                await setItemInStorage({
+                    key: StaticText.POKEMON_LIST,
+                    value: JSON.stringify([...PokemonList, ...response]),
+                })
             }
 
         }).catch(() => { })
