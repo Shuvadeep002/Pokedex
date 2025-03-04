@@ -23,18 +23,11 @@ export const pokemonSlice = createSlice({
         },
         setPokemonList: (state, action) => {
             state.pokemonList = action.payload;
-            setItemInStorage({
-                key: StaticText.POKEMON_LIST,
-                value: JSON.stringify(action.payload),
-            })
         },
         addPokemonList: (state, action) => {
             let data = state.pokemonList.concat(action.payload)
             state.pokemonList = data
-            setItemInStorage({
-                key: StaticText.POKEMON_LIST,
-                value: JSON.stringify(data),
-            })
+           
         },
         setIndividualPokemon: (state, action) => {
             state.pokemonDetails = action.payload
