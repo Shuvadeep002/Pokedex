@@ -69,8 +69,6 @@ npm run ios  # OR yarn ios
 - Offline mode support
 - Add favorite Pokémon list
 
-## 📝 License
-This project is licensed under the MIT License.
 
 
 - **Email:** your-email@example.com
