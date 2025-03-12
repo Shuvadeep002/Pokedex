@@ -54,7 +54,7 @@ npm run ios  # OR yarn ios
 
 ## 🔧 Technologies Used
 - React Native
-- Redux (if applicable)
+- Redux toolkit
 - PokeAPI
 - Styled Components
 
